@@ -1,0 +1,13 @@
+<h1>{{object.name}}</h1>
+<p>{{object.created_at}}</p>
+<h3>Phones</h3>
+                <a href='edit/{{object.id}}'>Edit</a>
+
+
+<ul>
+        {% for phone in object.phones.all %}
+        <li>
+            {{phone.number}}
+        </li>
+        {% endfor %}
+</ul>

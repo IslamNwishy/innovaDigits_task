@@ -1,0 +1,14 @@
+{% comment %} {% extends "admin/base_site.html" %} {% endcomment %}
+{% load static %}
+
+<head>
+<script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+
+{{ form.media }}
+<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+</head>
+
+{% block content %}
+
+{% endblock %}

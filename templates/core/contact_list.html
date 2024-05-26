@@ -1,0 +1,45 @@
+<a href='/create'>+ Add Contact</a>
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name
+            </th>
+        
+            <th>Created At
+            </th>
+        </tr>
+
+
+    </thead>
+
+    <tbody>
+
+        {%if not object_list%}
+
+        <tr>
+            <td>No records</td>
+        </tr>
+        {% endif %}
+
+        {% for contact in object_list %}
+        <tr>
+            <td>{{contact.name}}
+            </td>
+        
+            <td>{{contact.created_at}}
+            </td>
+
+            <td>
+                <a href='view/{{contact.id}}'>View</a>
+                <a href='edit/{{contact.id}}'>Edit</a>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>

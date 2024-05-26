@@ -1,0 +1,34 @@
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 1234:5432
+    environment:
+      POSTGRES_DB: innovaDigits_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  app:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    # in case you have a .env file
+    # env_file: 
+    #   - ./.env
+    volumes:
+      - .:/app
+
+    entrypoint: ./docker-entrypoint.sh
+    restart: on-failure
+
+
+volumes:
+  postgres_data:

@@ -1,0 +1,43 @@
+{% extends "base_general.html" %}
+
+{% block content %}
+<h1>Add Contact</h1>
+<form  method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+    </div>
+    <fieldset>
+        <h3>Phones</h3>
+        {{ formset.management_form }}
+        <div id="form_set">
+            {% for form in formset.forms %}
+                <table class='no_error'>
+                    {{ form.as_table }}
+                </table>
+            {% endfor %}
+        </div>
+        <input type="button" value="+ Add Phone" id="add_more">
+        <div id="empty_form" style="display:none">
+            <table class='no_error'>
+                {{ formset.empty_form.as_table }}
+            </table>
+    </fieldset>
+    <input type="submit" value="Save" style='margin-top:10px;'>
+</form>
+
+<script>
+    window.addEventListener("load", function() {
+    (function($) {
+        $('#add_more').click(function() {
+        var form_idx = $('#id_form-TOTAL_FORMS').val();
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+    })(django.jQuery);
+});
+    
+</script>
+{% endblock %}
+
+
