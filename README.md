@@ -2,7 +2,7 @@
 
 ## Schema
 
-![schema](docs\assets\schema.png)
+![schema](https://github.com/IslamNwishy/innovaDigits_task/blob/main/docs/assets/schema.png)
 
 ## How to Run
 
